@@ -13,6 +13,6 @@ Pre-requisites
 --------------
 -Please enter the  Email Address and  Password in the Constants file for sending email 
 
-![MainScreen]![device-2017-08-16-182635](https://user-images.githubusercontent.com/26081164/29364992-02ad8af6-82b3-11e7-82e2-ccc6ef92f3dd.png)
+![device-2017-08-16-182635](https://user-images.githubusercontent.com/26081164/29364992-02ad8af6-82b3-11e7-82e2-ccc6ef92f3dd.png)
 
 
