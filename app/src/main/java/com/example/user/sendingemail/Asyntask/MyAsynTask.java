@@ -1,24 +1,15 @@
 package com.example.user.sendingemail.Asyntask;
-
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import com.example.user.sendingemail.Utilities.Configuration;
 import com.example.user.sendingemail.Utilities.Constants;
-
-import java.net.URI;
 import java.util.Properties;
-
-import javax.activation.CommandMap;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
-import javax.activation.MailcapCommandMap;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -31,9 +22,6 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-/**
- * Created by user on 7/7/17.
- */
 
 public class MyAsynTask extends AsyncTask<Void,Void,Void>
 {
@@ -42,15 +30,16 @@ public class MyAsynTask extends AsyncTask<Void,Void,Void>
     private String email;
     private String message;
     private String name;
-    String attchedFiles;
+    private String attchedFiles;
     private ProgressDialog progressDialog;
-    public MyAsynTask(Context context, String email,String message,String name, String attchedFiles)
+    public MyAsynTask(Context context, String email,String message,String name,String attchedFiles)
     {
         this.context = context;
         this.email = email;
         this.message = message;
         this.name=name;
         this.attchedFiles=attchedFiles;
+
     }
 
     @Override
@@ -96,33 +85,47 @@ public class MyAsynTask extends AsyncTask<Void,Void,Void>
         {
             //Creating MimeMessage object
 
-            MimeMessage mm = new MimeMessage(session);
-            mm.setFrom(new InternetAddress(Configuration.EMAIL));
+            MimeMessage messageToSend = new MimeMessage(session);
+            messageToSend.setFrom(new InternetAddress(Configuration.EMAIL));
             //Setting sender address
-            mm.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-            mm.addRecipient(Message.RecipientType.CC,new InternetAddress("amar.tyagi@kelltontech.com"));
-
-            mm.setSubject("password");
+            messageToSend.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+          /*  if(receipentEmail !=null)
+            {
+                mm.addRecipient(Message.RecipientType.CC,new InternetAddress(receipentEmail));
+            }
+           // mm.addRecipient(Message.RecipientType.CC,new InternetAddress("amar.tyagi@kelltontech.com"));
+*/
+            messageToSend.setSubject("password");
             BodyPart messageBodyPart = new MimeBodyPart();
 
             // Fill the message
-            messageBodyPart.setText("This is message body");
+            messageBodyPart.setText(Constants.Dear+name+Constants.Congratulation+Constants.InfoPassword+message);
 
             // adding body
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(messageBodyPart);
 
             // Part two is attachment
-            messageBodyPart = new MimeBodyPart();
-            DataSource source = new FileDataSource(attchedFiles);
-            messageBodyPart.setDataHandler(new DataHandler(source));
-            messageBodyPart.setFileName(attchedFiles);
-            multipart.addBodyPart(messageBodyPart);
+            if(attchedFiles!=null)
+            {
+                messageBodyPart = new MimeBodyPart();
+                DataSource source = new FileDataSource(attchedFiles);
+                messageBodyPart.setDataHandler(new DataHandler(source));
+                messageBodyPart.setFileName(attchedFiles);
+                multipart.addBodyPart(messageBodyPart);
+                // Send the complete message parts
+                messageToSend.setContent(multipart);
+                // Send message
+                Transport.send(messageToSend);
+            }
+            else
+                {
+                // Send the complete message parts
+                messageToSend.setContent(multipart);
+                // Send message
+                Transport.send(messageToSend);
+            }
 
-            // Send the complete message parts
-            mm.setContent(multipart);
-            // Send message
-            Transport.send(mm);
         }
         catch (MessagingException e)
         {

@@ -1,7 +1,10 @@
 package com.example.user.sendingemail.Utilities;
 
 /**
- * Created by user on 7/7/17.
+ *
+ * For message body  that is to be send with mail
+ * @author utkarsh sundaram
+ *
  */
 
 public class Constants

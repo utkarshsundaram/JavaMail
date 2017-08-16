@@ -1,9 +1,10 @@
 package com.example.user.sendingemail;
 /**
-*
-* This activity takes the email no and other necessary information to
+ *
+ * This activity takes the email no and other necessary information to
  * send along with the attachment
  * @author utkarsh sundaram
+ *
 */
 
 import android.Manifest;
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText mEditTextEmail;
     private EditText mEditTextName;
     private EditText mEditTextPassword;
-    private EditText mEditTextMobile;
     private Button buttonRegister,buttonAttachment;
     private MyAsynTask asynTask;
     private static final int PICK_FROM_GALLERY = 101;
@@ -44,10 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int PICKFILE_RESULT_CODE = 1;
     private  String FilePath;
     Uri URI = null;
-    int columnIndex;
-    String attachmentFile;
 
-    private static final String TAG=MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,10 +54,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mEditTextName = (EditText) findViewById(R.id.txtname_reg);
         buttonRegister = (Button) findViewById(R.id.btn_reg);
         buttonAttachment = (Button) findViewById(R.id.btn_attachment);
-        mEditTextMobile = (EditText) findViewById(R.id.txtmobile_reg);
+
         buttonRegister.setOnClickListener(this);
         buttonAttachment.setOnClickListener(this);
     }
+
 
 /**
  *
@@ -76,7 +74,7 @@ public void readTheFile()
         intent.setType("file/*");
         startActivityForResult(intent,PICKFILE_RESULT_CODE);
 
-Toast.makeText(MainActivity.this,"For code commiting",Toast.LENGTH_LONG).show();
+//Toast.makeText(MainActivity.this,"For code commiting",Toast.LENGTH_LONG).show();
        /* Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image*//*");
         startActivityForResult(Intent.createChooser(intent, "Complete action using"),
@@ -134,11 +132,11 @@ public void  sendTheMail()
     String email=mEditTextEmail.getText().toString();
     String Password=mEditTextPassword.getText().toString();
     String name=mEditTextName.getText().toString();
-    //asynTask=new MyAsynTask(MainActivity.this,email,Password,name,attachmentFile);
     asynTask=new MyAsynTask(MainActivity.this,email,Password,name,FilePath);
     asynTask.execute();
 
 }
+
     /**
      *
      *This function is used to define the event
@@ -237,6 +235,7 @@ public void  sendTheMail()
      *
      *This function is used check whether the
      * permission has been granted or not
+     *
      *
      */
 

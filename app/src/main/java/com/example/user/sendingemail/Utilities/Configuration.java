@@ -1,11 +1,13 @@
 package com.example.user.sendingemail.Utilities;
 
 /**
- * Created by user on 7/7/17.
+ *
+ * Enter your email address and its Password
+ * @author utkarsh sundaram
  */
 
 public class Configuration
 {
-    public static final String EMAIL ="your email id";
-    public static final String PASSWORD ="your password";
+    public static final String EMAIL ="Your email";
+    public static final String PASSWORD ="yourpassword";
 }
