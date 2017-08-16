@@ -1,7 +1,6 @@
 # JavaMail Sample
 ===================================
->This Project is to send mail 
--Send mail with your Android Devices without having any default Email Application
+>This Project is to send mail with attachment without having any default Email Application from your Android phone
 
 
 Pre-requisites
@@ -11,7 +10,7 @@ Pre-requisites
 - Android Build Tools v26.0.0
 
 Additional Features that can be added 
-> You Can cc or Bcc any other email address
+>  cc or Bcc to any other email address
 
 # Important 
 --------------
