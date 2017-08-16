@@ -14,6 +14,6 @@ Additional Features that can be added
 > You Can cc or Bcc any other email address
 
 # Important 
-===================================
+--------------
 -Please enter the  Email Address and  Password in the Constants file for sending email 
 
