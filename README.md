@@ -6,8 +6,7 @@
 Pre-requisites
 --------------
 
-- Android SDK v26
-- Android Build Tools v26.0.0
+- Android SDK v10
 
 # Important 
 --------------
@@ -20,6 +19,7 @@ Pre-requisites
 --------------
 ![device-sendingmessage](https://user-images.githubusercontent.com/26081164/29365661-69612e54-82b5-11e7-8ade-c6adc4b2f9ed.png)
 --------------
+![device-message send](https://user-images.githubusercontent.com/26081164/29365707-968cf462-82b5-11e7-9603-2d1224343a7c.png)
 
 
 
