@@ -30,6 +30,7 @@ public class MyAsynTask extends AsyncTask<Void,Void,Void>
     private String email;
     private String message;
     private String name;
+
     private String attchedFiles;
     private ProgressDialog progressDialog;
     public MyAsynTask(Context context, String email,String message,String name,String attchedFiles)

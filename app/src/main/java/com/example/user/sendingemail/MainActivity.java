@@ -142,6 +142,7 @@ public void  sendTheMail()
      *This function is used to define the event
      * on the click of the button
      *
+     *
      */
     @Override
     public void onClick(View v)
